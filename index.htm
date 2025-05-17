@@ -69,7 +69,7 @@
     }
 
     .left-column {
-      width: 150px;
+      width: 190px;
       flex-shrink: 0;
     }
 
@@ -89,26 +89,35 @@
     }
 
     .carreapps {
-      width: 140px;
-      height: 21px;
+      width: 180px;
+      height: 30px;
       background-color: #F0D6F1;
       display: flex;
       align-items: center;
-      padding: 2px 4px;
+      padding: 4px 8px;
       box-sizing: border-box;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 0; /* coins pointus */
+    }
+
+    .carreapps:hover {
+      background-color: #e1bee7;
     }
 
     .carreapps img {
-      width: 16px;
-      height: 16px;
-      margin-right: 6px;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
     }
 
     .carreapps a {
       text-decoration: none;
       color: black;
-      font-size: 13px;
+      font-size: 16px;
+      font-weight: 600;
+      user-select: none;
     }
 
     .right-content {
