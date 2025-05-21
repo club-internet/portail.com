@@ -101,6 +101,7 @@
       margin-bottom: 8px;
       cursor: pointer;
       border-radius: 0;
+      transition: all 0.3s ease;
     }
 
     .carreapps:hover {
@@ -138,7 +139,7 @@
     }
 
     .info-header, .rss-header {
-      width: 346px;
+      width: 100%;
       height: 22px;
       background-color: #F0D6F1;
       border-bottom: 1px solid #752878;
@@ -155,6 +156,31 @@
       color: #000;
       flex-grow: 1;
       overflow-y: auto;
+    }
+
+    .whatsapp-expanded {
+      display: none;
+      width: 890px;
+      height: 554px;
+      border: 1px solid #752878;
+      margin-top: 20px;
+      flex-direction: column;
+      background-color: #752878;
+      color: white;
+    }
+
+    .whatsapp-header {
+      background-color: #5b1d5f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      font-weight: bold;
+    }
+
+    .whatsapp-close {
+      cursor: pointer;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -175,28 +201,59 @@
   <div class="container">
     <div class="left-column">
       <button class="flashmail-button" onclick="window.open('https://mail.aol.com/', '_blank')">Flashmail</button>
+
       <div class="carreapps"><img src="https://i.postimg.cc/zv6v7GVz/moncompte.gif" alt="Mon Compte" /><a href="http://tplinkwifi.net" target="_blank">Mon compte</a></div>
       <div class="carreapps"><img src="https://i.postimg.cc/LsK4hWZW/hp1-icons.png" alt="Actualité" /><a href="https://fr.news.yahoo.com/" target="_blank">Actualité</a></div>
       <div class="carreapps"><img src="https://i.postimg.cc/ZYVqjj19/hp5-icons.png" alt="Météo" /><a href="https://www.meteoetradar.com/" target="_blank">Météo</a></div>
       <div class="carreapps"><img src="https://i.postimg.cc/2SB8kY3v/hp3-icons.png" alt="Programme TV" /><a href="https://www.programme-tv.com/mon-programme-television.html" target="_blank">Programme TV</a></div>
       <div class="carreapps"><img src="https://i.postimg.cc/K8D208WZ/popeater_for_portal.png" alt="Purepeople" /><a href="https://www.purepeople.com/" target="_blank">Purepeople</a></div>
       <div class="carreapps"><img src="https://i.postimg.cc/HxNhsqrc/h6-icons.png" alt="Spiritaccount" /><a href="https://spiritaccount.net/" target="_blank">Spiritaccount</a></div>
+
+      <!-- Nouveau bouton WhatsApp -->
+      <div class="carreapps" onclick="openWhatsApp()">
+        <img src="https://i.postimg.cc/GpqLtS4z/226757.png" alt="WhatsApp" />
+        <span style="font-size: 16px; font-weight: 600;">WhatsApp</span>
+      </div>
     </div>
 
     <div class="right-content">
-      <div class="info-box">
-        <div class="info-header">info abonnée club internet</div>
-        <div class="info-content">jellyfin le nouveau service de vod!</div>
+      <div style="display: flex; gap: 18px;">
+        <!-- Actualités à gauche -->
+        <div class="rss-box">
+          <div class="rss-header">Actualités France Info</div>
+          <div class="rss-content" id="rss-feed">Chargement...</div>
+        </div>
+
+        <!-- Info abonné à droite -->
+        <div class="info-box">
+          <div class="info-header">info abonnée club internet</div>
+          <div class="info-content">jellyfin le nouveau service de vod!</div>
+        </div>
       </div>
 
-      <div class="rss-box">
-        <div class="rss-header">Actualités France Info</div>
-        <div class="rss-content" id="rss-feed">Chargement...</div>
+      <!-- Boîte WhatsApp agrandie (affichée uniquement après clic) -->
+      <div class="whatsapp-expanded" id="whatsapp-frame">
+        <div class="whatsapp-header">
+          <span class="whatsapp-close" onclick="closeWhatsApp()">❌</span>
+          <span>WhatsApp</span>
+        </div>
+        <div style="padding: 20px;">
+          <p>WhatsApp ne peut pas être affiché ici pour des raisons de sécurité.</p>
+          <p><a href="https://web.whatsapp.com/" target="_blank" style="color: yellow;">Cliquez ici pour ouvrir WhatsApp Web</a></p>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    function openWhatsApp() {
+      document.getElementById('whatsapp-frame').style.display = 'flex';
+    }
+
+    function closeWhatsApp() {
+      document.getElementById('whatsapp-frame').style.display = 'none';
+    }
+
     fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.franceinfo.fr/titres.rss'))
       .then(response => response.json())
       .then(data => {
@@ -218,4 +275,3 @@
   </script>
 </body>
 </html>
-
