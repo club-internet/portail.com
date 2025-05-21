@@ -13,55 +13,57 @@
     }
 
     .header {
-      width: 956px;
+      width: 1053px;
       height: 106px;
-      margin: 20px auto 20px auto;
+      margin: 20px auto;
       border: 1px solid #752878;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px;
+      justify-content: center;
       box-sizing: border-box;
+      gap: 20px;
     }
 
     .logo {
-      height: 86px;
+      width: 194px;
+      height: 51px;
     }
 
     .search-box {
-      width: 642px;
-      height: 86px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      box-sizing: border-box;
     }
 
     .search-input {
       width: 500px;
-      height: 26.4px;
+      height: 30px;
       font-size: 16px;
       padding: 4px;
       box-sizing: border-box;
     }
 
     .search-button {
-      width: 116.4px;
-      height: 26.4px;
-      margin-left: 10px;
-      background-color: #28a745;
-      color: white;
+      width: 116px;
+      height: 30px;
+      background: none;
       border: none;
-      font-size: 14px;
+      margin-left: 10px;
       cursor: pointer;
     }
 
-    .search-button:hover {
-      background-color: #218838;
+    .search-button img {
+      width: 116px;
+      height: 30px;
+    }
+
+    .aol-logo {
+      width: 185px;
+      height: 51px;
+      margin-left: 10px;
     }
 
     .container {
-      width: 956px;
+      width: 1053px;
       margin: 0 auto;
       display: flex;
       justify-content: flex-start;
@@ -98,8 +100,7 @@
       box-sizing: border-box;
       margin-bottom: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
-      border-radius: 0; /* coins pointus */
+      border-radius: 0;
     }
 
     .carreapps:hover {
@@ -122,17 +123,12 @@
 
     .right-content {
       display: flex;
+      flex-direction: column;
       gap: 18px;
       flex-shrink: 0;
     }
 
-    .right-content iframe {
-      width: 458px;
-      height: 911px;
-      border: 1px solid #ccc;
-    }
-
-    .info-box {
+    .info-box, .rss-box {
       width: 349px;
       height: 180px;
       border: 1px solid #752878;
@@ -141,7 +137,7 @@
       flex-direction: column;
     }
 
-    .info-header {
+    .info-header, .rss-header {
       width: 346px;
       height: 22px;
       background-color: #F0D6F1;
@@ -153,108 +149,73 @@
       user-select: none;
     }
 
-    .info-content {
+    .info-content, .rss-content {
       padding: 10px 12px;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 14px;
       color: #000;
       flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
-
   <div class="header">
-    <img src="https://i.postimg.cc/D0hYXvyD/fr-club.png" alt="Logo" class="logo" />
+    <img src="https://i.postimg.cc/Pq4HtjMH/t-l-chargement.jpg" alt="Logo" class="logo" />
     <div class="search-box">
-      <form action="https://search.yahoo.com/search" method="get" target="_blank">
-        <input
-          type="text"
-          name="p"
-          placeholder="Chercher une recette..."
-          class="search-input"
-          required
-        />
-        <button type="submit" class="search-button">Rechercher</button>
+      <form action="https://search.yahoo.com/search" method="get" target="_blank" style="display: flex; align-items: center;">
+        <input type="text" name="p" placeholder="Chercher une recette..." class="search-input" required />
+        <button type="submit" class="search-button">
+          <img src="https://i.postimg.cc/3wSKXh0B/recherche.png" alt="Rechercher" />
+        </button>
+        <img src="https://i.postimg.cc/5jWXvJQ0/aol-logo.jpg" alt="AOL Logo" class="aol-logo" />
       </form>
     </div>
   </div>
 
   <div class="container">
     <div class="left-column">
-      <button
-        class="flashmail-button"
-        onclick="window.open('https://mail.aol.com/', '_blank')"
-      >
-        Flashmail
-      </button>
-
-      <div class="carreapps">
-        <img
-          src="https://i.postimg.cc/zv6v7GVz/moncompte.gif"
-          alt="Mon Compte"
-        />
-        <a href="http://tplinkwifi.net" target="_blank">Mon compte</a>
-      </div>
-
-      <div class="carreapps">
-        <img
-          src="https://i.postimg.cc/LsK4hWZW/hp1-icons.png"
-          alt="Actualité"
-        />
-        <a href="https://fr.news.yahoo.com/" target="_blank">Actualité</a>
-      </div>
-
-      <div class="carreapps">
-        <img
-          src="https://i.postimg.cc/ZYVqjj19/hp5-icons.png"
-          alt="Météo"
-        />
-        <a href="https://www.meteoetradar.com/" target="_blank">Météo</a>
-      </div>
-
-      <div class="carreapps">
-        <img
-          src="https://i.postimg.cc/2SB8kY3v/hp3-icons.png"
-          alt="Programme TV"
-        />
-        <a
-          href="https://www.programme-tv.com/mon-programme-television.html"
-          target="_blank"
-          >Programme TV</a
-        >
-      </div>
-
-      <div class="carreapps">
-        <img
-          src="https://i.postimg.cc/K8D208WZ/popeater_for_portal.png"
-          alt="Purepeople"
-        />
-        <a href="https://www.purepeople.com/" target="_blank">Purepeople</a>
-      </div>
-
-      <div class="carreapps">
-        <img src="https://i.postimg.cc/HxNhsqrc/h6-icons.png" alt="Spiritaccount" />
-        <a href="https://spiritaccount.net/" target="_blank">Spiritaccount</a>
-      </div>
+      <button class="flashmail-button" onclick="window.open('https://mail.aol.com/', '_blank')">Flashmail</button>
+      <div class="carreapps"><img src="https://i.postimg.cc/zv6v7GVz/moncompte.gif" alt="Mon Compte" /><a href="http://tplinkwifi.net" target="_blank">Mon compte</a></div>
+      <div class="carreapps"><img src="https://i.postimg.cc/LsK4hWZW/hp1-icons.png" alt="Actualité" /><a href="https://fr.news.yahoo.com/" target="_blank">Actualité</a></div>
+      <div class="carreapps"><img src="https://i.postimg.cc/ZYVqjj19/hp5-icons.png" alt="Météo" /><a href="https://www.meteoetradar.com/" target="_blank">Météo</a></div>
+      <div class="carreapps"><img src="https://i.postimg.cc/2SB8kY3v/hp3-icons.png" alt="Programme TV" /><a href="https://www.programme-tv.com/mon-programme-television.html" target="_blank">Programme TV</a></div>
+      <div class="carreapps"><img src="https://i.postimg.cc/K8D208WZ/popeater_for_portal.png" alt="Purepeople" /><a href="https://www.purepeople.com/" target="_blank">Purepeople</a></div>
+      <div class="carreapps"><img src="https://i.postimg.cc/HxNhsqrc/h6-icons.png" alt="Spiritaccount" /><a href="https://spiritaccount.net/" target="_blank">Spiritaccount</a></div>
     </div>
 
     <div class="right-content">
-      <iframe
-        src="https://www.franceinfo.fr/"
-        title="Franceinfo Actualités"
-      ></iframe>
-
       <div class="info-box">
         <div class="info-header">info abonnée club internet</div>
         <div class="info-content">jellyfin le nouveau service de vod!</div>
       </div>
+
+      <div class="rss-box">
+        <div class="rss-header">Actualités France Info</div>
+        <div class="rss-content" id="rss-feed">Chargement...</div>
+      </div>
     </div>
   </div>
 
+  <script>
+    fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.franceinfo.fr/titres.rss'))
+      .then(response => response.json())
+      .then(data => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data.contents, 'text/xml');
+        const items = xml.querySelectorAll('item');
+        const feed = document.getElementById('rss-feed');
+        feed.innerHTML = '';
+        items.forEach((item, index) => {
+          if (index < 5) {
+            const title = item.querySelector('title').textContent;
+            feed.innerHTML += '<p>• ' + title + '</p>';
+          }
+        });
+      })
+      .catch(err => {
+        document.getElementById('rss-feed').innerText = 'Erreur de chargement du flux RSS';
+      });
+  </script>
 </body>
 </html>
+
