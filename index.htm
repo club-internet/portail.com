@@ -2,256 +2,388 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>club internet, neuf-ci avec aol</title>
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/hvVxXYDP/favicon-1.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Club.Internet</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .header {
-      width: 1053px;
-      height: 106px;
-      margin: 20px auto;
-      border: 1px solid #752878;
+    .toolbar {
+      width: 100%;
+      height: 40px;
+      background-color: #171b26;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 0 10px;
       box-sizing: border-box;
-      gap: 20px;
-    }
-
-    .logo {
-      width: 194px;
-      height: 51px;
-    }
-
-    .search-box {
-      display: flex;
-      align-items: center;
-    }
-
-    .search-input {
-      width: 500px;
-      height: 30px;
-      font-size: 16px;
-      padding: 4px;
-      box-sizing: border-box;
-    }
-
-    .search-button {
-      width: 116px;
-      height: 30px;
-      background: none;
-      border: none;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-
-    .search-button img {
-      width: 116px;
-      height: 30px;
-    }
-
-    .aol-logo {
-      width: 185px;
-      height: 51px;
-      margin-left: 10px;
-    }
-
-    .container {
-      width: 1053px;
-      margin: 0 auto;
-      display: flex;
-      gap: 18px;
-    }
-
-    .left-column {
-      width: 190px;
       flex-shrink: 0;
     }
 
-    .flashmail-button {
-      width: 135px;
-      height: 22px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      margin-bottom: 10px;
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .flashmail-button:hover {
-      background-color: #218838;
+    .toolbar-center {
+      height: 20px;
+      width: 1px;
+      background-color: #00a0de;
+      margin: 0 10px;
+      flex-shrink: 0;
+    }
+
+    .toolbar img {
+      height: 24px;
+      display: block;
+    }
+
+    .toolbar a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .toolbar-right {
+      gap: 5px;
+    }
+
+    .header-bottom {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      gap: 15px;
+      background: white;
+      height: 60px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .club-logo {
+      height: 40px;
+    }
+
+    form.search-form {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-grow: 1;
+      max-width: 400px;
+    }
+
+    form.search-form input[type="text"] {
+      flex-grow: 1;
+      height: 36px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      padding: 0 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    form.search-form button {
+      background-color: #e20074;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      height: 36px;
+      width: 50px;
+      border-radius: 0 4px 4px 0;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    form.search-form button:hover {
+      background-color: #b1005b;
+    }
+
+    .main-content {
+      display: flex;
+      padding: 10px 20px;
+      gap: 40px;
+      background: white;
+      flex-grow: 1;
+      box-sizing: border-box;
+      overflow-y: auto;
+      min-height: 400px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Colonne verticale contenant messagerie + carreapps */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      min-width: 140px;
+    }
+
+    .btn-messagerie {
+      width: 138.9px;
+      height: 25.8833px;
+      cursor: pointer;
+      display: block;
+    }
+
+    .carreapps-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 138.9px;
     }
 
     .carreapps {
-      width: 180px;
-      height: 30px;
-      background-color: #F0D6F1;
       display: flex;
       align-items: center;
-      padding: 4px 8px;
-      box-sizing: border-box;
-      margin-bottom: 8px;
+      height: 25.9px;
+      background: #f1f1f1;
+      padding: 2px 6px;
+      gap: 6px;
+      border-radius: 4px;
       cursor: pointer;
-    }
-
-    .carreapps:hover {
-      background-color: #e1bee7;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .carreapps img {
-      width: 24px;
-      height: 24px;
-      margin-right: 10px;
+      height: 20px;
+      width: 20px;
+      object-fit: contain;
     }
 
-    .carreapps a {
-      text-decoration: none;
-      color: black;
-      font-size: 16px;
-      font-weight: 600;
-      user-select: none;
-    }
-
-    .right-content {
-      display: flex;
-      flex-direction: row;
-      gap: 18px;
-    }
-
-    .info-box, .rss-box {
-      width: 349px;
-      height: auto;
-      border: 1px solid #752878;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .info-header, .rss-header {
-      height: 22px;
-      background-color: #F0D6F1;
-      border-bottom: 1px solid #752878;
-      font-weight: bold;
-      padding-left: 8px;
-      line-height: 22px;
-      box-sizing: border-box;
-      user-select: none;
-    }
-
-    .info-content, .rss-content {
-      padding: 10px 12px;
-      font-size: 14px;
-      color: #000;
+    #rss-feed {
+      color: #101421;
+      max-width: 960px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       flex-grow: 1;
-      overflow-y: auto;
     }
 
-    .item-entry {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .item-entry img {
-      width: 80px;
-      height: auto;
-      margin-left: 10px;
-    }
-
-    .item-entry a {
-      text-decoration: none;
-      color: black;
+    #rss-feed h2 {
       font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #rss-articles-monde,
+    #rss-articles-national {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    #rss-articles-monde > div,
+    #rss-articles-national > div {
+      width: calc(25% - 15px);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #rss-articles-monde img,
+    #rss-articles-national img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    #rss-articles-monde div > div,
+    #rss-articles-national div > div {
+      color: #101421;
+      font-size: 0.9rem;
+      margin-top: 6px;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="https://i.postimg.cc/g2N2LHTB/sfr-neuflogo.jpg" alt="Logo" class="logo" />
-    <div class="search-box">
-      <form action="https://search.yahoo.com/search" method="get" target="_blank" style="display: flex; align-items: center;">
-        <input type="text" name="p" placeholder="Chercher une recette..." class="search-input" required />
-        <button type="submit" class="search-button">
-          <img src="https://i.postimg.cc/3wSKXh0B/recherche.png" alt="Rechercher" />
-        </button>
-        <img src="https://i.postimg.cc/5jWXvJQ0/aol-logo.jpg" alt="AOL Logo" class="aol-logo" />
-      </form>
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <a href="https://www.meteoetradar.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.postimg.cc/4dwSn1tQ/cloudy-30c8fdc0.png" alt="Météo" />
+        <span>Météo</span>
+      </a>
+    </div>
+    <div class="toolbar-center"></div>
+    <div class="toolbar-right">
+      <a href="https://www.amazon.fr" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.postimg.cc/YS05gZry/bc3ff261-9c1f-4cce-b347-f5d8a79a0b2f.png" alt="Amazon" />
+      </a>
+      <a href="https://www.auchan.fr" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.postimg.cc/5yXWVrGC/Logo-Auchan-1983-2015-svg.png" alt="Auchan" />
+      </a>
     </div>
   </div>
 
-  <div class="container">
+  <div class="header-bottom">
+    <img
+      src="https://i.postimg.cc/DwxVSnTX/club-internet.png"
+      alt="Club Internet"
+      class="club-logo"
+    />
+    <form
+      class="search-form"
+      action="https://www.google.com/search"
+      method="GET"
+      target="_blank"
+      role="search"
+    >
+      <input
+        type="text"
+        name="q"
+        placeholder="Recherche Google..."
+        aria-label="Recherche Google"
+        required
+      />
+      <button type="submit" aria-label="Rechercher">OK</button>
+    </form>
+  </div>
+
+  <div class="main-content">
     <div class="left-column">
-      <button class="flashmail-button" onclick="window.open('https://mail.aol.com/', '_blank')">Flashmail</button>
-      <div class="carreapps"><img src="https://i.postimg.cc/zv6v7GVz/moncompte.gif" alt="Mon Compte" /><a href="http://tplinkwifi.net" target="_blank">Mon compte</a></div>
-      <div class="carreapps"><img src="https://i.postimg.cc/LsK4hWZW/hp1-icons.png" alt="Actualité" /><a href="https://fr.news.yahoo.com/" target="_blank">Actualité</a></div>
-      <div class="carreapps"><img src="https://i.postimg.cc/ZYVqjj19/hp5-icons.png" alt="Météo" /><a href="https://www.meteoetradar.com/" target="_blank">Météo</a></div>
-      <div class="carreapps"><img src="https://i.postimg.cc/2SB8kY3v/hp3-icons.png" alt="Programme TV" /><a href="https://www.programme-tv.com/mon-programme-television.html" target="_blank">Programme TV</a></div>
-      <div class="carreapps"><img src="https://i.postimg.cc/K8D208WZ/popeater_for_portal.png" alt="Purepeople" /><a href="https://www.purepeople.com/" target="_blank">Purepeople</a></div>
-      <div class="carreapps"><img src="https://i.postimg.cc/HxNhsqrc/h6-icons.png" alt="Spiritaccount" /><a href="https://spiritaccount.net/" target="_blank">Spiritaccount</a></div>
+      <a
+        href="https://webmail.disroot.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-messagerie"
+        title="Messagerie"
+      >
+        <img
+          src="https://i.postimg.cc/8P6vtz5h/messagerie.png"
+          alt="Messagerie"
+          style="width: 100%; height: 100%; display: block;"
+        />
+      </a>
+
+      <div class="carreapps-column">
+        <a
+          href="https://sfr-arlon.my.canva.site/offre-box"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="Offre"
+        >
+          <img src="https://i.postimg.cc/nhyfqZzS/offres.gif" alt="Offre" />
+          Offre
+        </a>
+        <a
+          href="http://tplinkwifi.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="Box"
+        >
+          <img src="https://i.postimg.cc/zv6v7GVz/moncompte.gif" alt="Box" />
+          Box
+        </a>
+        <a
+          href="https://escargot4.wordpress.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="actualiter"
+        >
+          <img src="https://i.postimg.cc/LsK4hWZW/hp1-icons.png" alt="actualiter" />
+          actualiter
+        </a>
+        <a
+          href="https://www.meteoetradar.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="météo"
+        >
+          <img src="https://i.postimg.cc/ZYVqjj19/hp5-icons.png" alt="météo" />
+          météo
+        </a>
+        <a
+          href="https://www.programme-tv.com/mon-programme-television.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="Programme TV"
+        >
+          <img src="https://i.postimg.cc/2SB8kY3v/hp3-icons.png" alt="Programme TV" />
+          Programme TV
+        </a>
+        <a
+          href="https://sfr-arlon.github.io/wap-sfr.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carreapps"
+          title="mobitel live!"
+        >
+          <img src="https://i.postimg.cc/285Mggvj/hp7-icons.png" alt="mobitel live!" />
+          mobitel live!
+        </a>
+      </div>
     </div>
 
-    <div class="right-content">
-      <div class="rss-box">
-        <div class="rss-header">Actualités France Info</div>
-        <div class="rss-content" id="rss-feed">Chargement...</div>
-      </div>
+    <div id="rss-feed">
+      <h2>Monde</h2>
+      <div id="rss-articles-monde"></div>
 
-      <div class="info-box">
-        <div class="info-header">info abonnée club internet</div>
-        <div class="info-content" id="info-content">Chargement...</div>
-      </div>
+      <h2>Actu National</h2>
+      <div id="rss-articles-national"></div>
     </div>
   </div>
 
   <script>
-    // Flux France Info
-    fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.franceinfo.fr/titres.rss'))
-      .then(response => response.json())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data.contents, 'text/xml');
-        const items = xml.querySelectorAll('item');
-        const feed = document.getElementById('rss-feed');
-        feed.innerHTML = '';
-        items.forEach((item, index) => {
-          if (index < 5) {
-            const title = item.querySelector('title').textContent;
-            feed.innerHTML += '<p>• ' + title + '</p>';
-          }
-        });
-      })
-      .catch(err => {
-        document.getElementById('rss-feed').innerText = 'Erreur de chargement du flux RSS';
-      });
-
-    // Flux WordPress info abonnée
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://aetsfr.wordpress.com/feed/')
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById('info-content');
+    async function loadRssFeed(rssUrl, containerId) {
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+        rssUrl
+      )}`;
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        const container = document.getElementById(containerId);
         container.innerHTML = '';
-        data.items.slice(0, 5).forEach(item => {
-          container.innerHTML += `
-            <div class="item-entry">
-              <div style="flex: 1;">
-                <a href="${item.link}" target="_blank">${item.title}</a>
-              </div>
-              <img src="${item.thumbnail || 'https://via.placeholder.com/80'}" alt="Image" />
-            </div>
-          `;
+
+        data.items.slice(0, 8).forEach((item) => {
+          const article = document.createElement('div');
+          article.style.width = 'calc(25% - 15px)';
+          article.style.cursor = 'pointer';
+          article.style.textAlign = 'center';
+
+          article.onclick = () => window.open(item.link, '_blank');
+
+          const img = document.createElement('img');
+          img.src = item.thumbnail || '';
+          img.alt = item.title;
+
+          const title = document.createElement('div');
+          title.textContent = item.title;
+
+          article.appendChild(img);
+          article.appendChild(title);
+          container.appendChild(article);
         });
-      })
-      .catch(error => {
-        document.getElementById('info-content').innerText = 'Erreur de chargement du flux.';
-      });
+      } catch (e) {
+        const container = document.getElementById(containerId);
+        container.textContent = 'Impossible de charger les actualités.';
+        console.error(e);
+      }
+    }
+
+    loadRssFeed('https://www.france24.com/fr/rss', 'rss-articles-monde');
+    loadRssFeed('https://escargot4.wordpress.com/feed/', 'rss-articles-national');
   </script>
 </body>
 </html>
+
 
